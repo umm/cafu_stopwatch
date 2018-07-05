@@ -1,0 +1,13 @@
+{
+    "name": "umm@cafu_stopwatch",
+    "references": [
+        "umm@cafu_core",
+        "umm@extra_unirx",
+        "umm@stopwatch",
+        "umm@unirx"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}
