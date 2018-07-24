@@ -1,9 +1,10 @@
-﻿using ExtraUniRx;
+﻿using CAFU.Stopwatch.Domain.UseCase;
+using ExtraUniRx;
 using NUnit.Framework;
 using UnityModule;
 using UniRx;
 
-namespace CAFU.Stopwatch.Domain.UseCase
+namespace EditTest.CAFU.Stopwatch.Domain.UseCase
 {
     public class StopwatchUseCaseTest
     {
