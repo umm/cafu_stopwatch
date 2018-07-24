@@ -4,7 +4,8 @@
         "umm@cafu_core",
         "umm@extra_unirx",
         "umm@stopwatch",
-        "umm@unirx"
+        "umm@unirx",
+        "umm@unirx_observablelifecyclemonobehaviour"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

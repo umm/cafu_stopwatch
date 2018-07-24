@@ -24,11 +24,12 @@
     "Assets"
   ],
   "dependencies": {
-    "@umm/cafu_core": "umm-projects/cafu_core#^2.0.0",
-    "@umm/extra_unirx": "umm-projects/extra_unirx#^1.0.0",
-    "@umm/scripts": "umm-projects/scripts#^1.0.0",
-    "@umm/stopwatch": "umm-projects/stopwatch#^1.0.0",
-    "@umm/unirx": "umm-projects/unirx#^2.0.0"
+    "@umm/cafu_core": "umm/cafu_core#^2.0.0",
+    "@umm/extra_unirx": "umm/extra_unirx#^1.0.0",
+    "@umm/scripts": "umm/scripts#^1.0.0",
+    "@umm/stopwatch": "umm/stopwatch#^1.0.0",
+    "@umm/unirx": "umm/unirx#^2.0.0",
+    "@umm/unirx_observablelifecyclemonobehaviour": "umm/unirx_observablelifecyclemonobehaviour#^1.0.2"
   },
   "devDependencies": {}
 }

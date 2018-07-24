@@ -1,6 +1,7 @@
 ﻿using System;
-using CAFU.Core.Presentation.Presenter;
 using CAFU.Stopwatch.Domain.UseCase;
+using UniRx;
+using IPresenter = CAFU.Core.Presentation.Presenter.IPresenter;
 
 namespace CAFU.Stopwatch.Presentation.View
 {
@@ -34,6 +35,16 @@ namespace CAFU.Stopwatch.Presentation.View
         public static IObservable<float> GetTimeAsObservable(this IStopwatchPresenter presenter)
         {
             return presenter.StopwatchUseCase.TimeAsObservable;
+        }
+
+        public static IObservable<Unit> GetStartedAsObservable(this IStopwatchPresenter presenter)
+        {
+            return presenter.StopwatchUseCase.StartedAsObservable;
+        }
+
+        public static IObservable<float> GetStoppedTimeAsObservable(this IStopwatchPresenter presenter)
+        {
+            return presenter.StopwatchUseCase.StoppedTimeAsObservable;
         }
     }
 }
