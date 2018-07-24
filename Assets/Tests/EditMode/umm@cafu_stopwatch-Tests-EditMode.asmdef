@@ -1,5 +1,5 @@
 {
-    "name": "Tests.EditMode",
+    "name": "umm@cafu_stopwatch-Tests-EditMode",
     "references": [
         "umm@cafu_stopwatch",
         "umm@cafu_core",
