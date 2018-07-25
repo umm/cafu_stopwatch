@@ -27,7 +27,7 @@ public class SamplePresenter : IStopwatchPresenter { /* implement */ }
 
 Now easy to refer stopwatch event.
 
-```
+```csharp
 var presenter = this.GetPresenter<IStopwatchPresenter>();
 
 // start
