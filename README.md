@@ -12,7 +12,7 @@
 ## Install
 
 ```shell
-yarn add "umm-projects/cafu_stopwatch#^1.0.0"
+yarn add "umm/cafu_stopwatch#^1.0.0"
 ```
 
 ## Usage
