@@ -66,6 +66,52 @@ namespace EditTest.CAFU.Stopwatch.Domain.UseCase
         }
 
         [Test]
+        public void PausedAsObservableTest()
+        {
+            var observer = new TestObserver<float>();
+            this.usecase.PausedTimeAsObservable.Subscribe(observer);
+            Assert.AreEqual(0, observer.OnNextCount);
+
+            this.usecase.Start();
+            Assert.AreEqual(0, observer.OnNextCount);
+
+            this.frameDiffTime.OnNext(1f);
+            Assert.AreEqual(0, observer.OnNextCount);
+
+            this.usecase.Pause();
+            Assert.AreEqual(1, observer.OnNextCount);
+            Assert.AreEqual(1f, observer.OnNextValues[0]);
+
+            this.usecase.Resume();
+            Assert.AreEqual(1, observer.OnNextCount);
+            Assert.AreEqual(1f, observer.OnNextValues[0]);
+
+            this.usecase.Stop();
+            Assert.AreEqual(1, observer.OnNextCount);
+            Assert.AreEqual(1f, observer.OnNextValues[0]);
+        }
+
+        [Test]
+        public void ResumedAsObservableTest()
+        {
+            var observer = new TestObserver<Unit>();
+            this.usecase.ResumedAsObservable.Subscribe(observer);
+            Assert.AreEqual(0, observer.OnNextCount);
+
+            this.usecase.Start();
+            Assert.AreEqual(0, observer.OnNextCount);
+
+            this.usecase.Pause();
+            Assert.AreEqual(0, observer.OnNextCount);
+
+            this.usecase.Resume();
+            Assert.AreEqual(1, observer.OnNextCount);
+
+            this.usecase.Stop();
+            Assert.AreEqual(1, observer.OnNextCount);
+        }
+
+        [Test]
         public void TimeAsObservableTest()
         {
             var observer = new TestObserver<float>();

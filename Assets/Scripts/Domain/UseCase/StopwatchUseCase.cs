@@ -19,18 +19,24 @@ namespace CAFU.Stopwatch.Domain.UseCase
         public IObservable<float> TimeAsObservable => this.Stopwatch.TimeAsObservable;
         public IObservable<Unit> StartedAsObservable => this.StartedSubject;
         public IObservable<float> StoppedTimeAsObservable => this.StoppedTimeSubject;
+        public IObservable<float> PausedTimeAsObservable => this.PausedTimeSubject;
+        public IObservable<Unit> ResumedAsObservable => this.ResumedSubject;
         public bool IsPlaying => this.Stopwatch.IsPlaying;
         public IObservable<bool> IsPlayingAsObservable => this.Stopwatch.IsPlayingAsObservable;
 
         protected IStopWatch Stopwatch { get; set; }
         private ISubject<Unit> StartedSubject { get; set; }
         private ISubject<float> StoppedTimeSubject { get; set; }
+        private ISubject<float> PausedTimeSubject { get; set; }
+        private ISubject<Unit> ResumedSubject { get; set; }
 
         protected virtual void Initialize()
         {
             this.Stopwatch = new StopWatch();
             this.StartedSubject = new Subject<Unit>();
             this.StoppedTimeSubject = new Subject<float>();
+            this.PausedTimeSubject = new Subject<float>();
+            this.ResumedSubject = new Subject<Unit>();
         }
 
         public void Start()
@@ -48,11 +54,13 @@ namespace CAFU.Stopwatch.Domain.UseCase
 
         public void Pause()
         {
+            this.PausedTimeSubject.OnNext(this.Stopwatch.Time);
             this.Stopwatch.Pause();
         }
 
         public void Resume()
         {
+            this.ResumedSubject.OnNext(Unit.Default);
             this.Stopwatch.Resume();
         }
     }

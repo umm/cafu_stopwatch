@@ -42,6 +42,16 @@ namespace CAFU.Stopwatch.Domain.UseCase
         IObservable<float> StoppedTimeAsObservable { get; }
 
         /// <summary>
+        /// Paused timming as observable
+        /// </summary>
+        IObservable<float> PausedTimeAsObservable { get; }
+
+        /// <summary>
+        /// Resumed timming as observable
+        /// </summary>
+        IObservable<Unit> ResumedAsObservable { get; }
+
+        /// <summary>
         /// Stopwatch is either playing or not
         /// </summary>
         bool IsPlaying { get; }
