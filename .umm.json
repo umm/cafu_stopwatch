@@ -1,0 +1,6 @@
+{
+  "automatic_reference_assemblies": [
+    "umm@cafu_core",
+    "umm@unirx"
+  ]
+}
