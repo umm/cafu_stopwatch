@@ -95,7 +95,7 @@ namespace EditTest.CAFU.Stopwatch.Domain.UseCase
         public void ResumedAsObservableTest()
         {
             var observer = new TestObserver<Unit>();
-            this.usecase.ResumedTimeAsObservable.Subscribe(observer);
+            this.usecase.ResumedAsObservable.Subscribe(observer);
             Assert.AreEqual(0, observer.OnNextCount);
 
             this.usecase.Start();

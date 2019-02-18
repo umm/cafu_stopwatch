@@ -49,7 +49,7 @@ namespace CAFU.Stopwatch.Domain.UseCase
         /// <summary>
         /// Resumed timming as observable
         /// </summary>
-        IObservable<Unit> ResumedTimeAsObservable { get; }
+        IObservable<Unit> ResumedAsObservable { get; }
 
         /// <summary>
         /// Stopwatch is either playing or not
