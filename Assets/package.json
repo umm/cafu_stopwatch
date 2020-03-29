@@ -1,7 +1,7 @@
 {
   "name": "dev.upm-packages.cafu-stopwatch",
   "displayName": "CAFU StopWatch",
-  "version": "1.2.0",
+  "version": "1.2.0-preview1",
   "unity": "2019.3",
   "description": "StopWatch on CAFU framework",
   "homepage": "https://github.com/umm/cafu_stopwatch",
