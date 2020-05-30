@@ -1,0 +1,25 @@
+{
+  "name": "dev.upm-packages.cafu-stopwatch",
+  "displayName": "CAFU StopWatch",
+  "version": "1.2.0-preview1",
+  "unity": "2019.3",
+  "description": "StopWatch on CAFU framework",
+  "homepage": "https://github.com/umm/cafu_stopwatch",
+  "bugs": {
+    "url": "https://github.com/umm/cafu_stopwatch/issues"
+  },
+  "author": "Takuma Maruyama",
+  "license": "MIT",
+  "keywords": [],
+  "category": "",
+  "dependencies": {
+    "com.stevevermeulen.extenject": "9.1.0-5",
+    "dev.upm-packages.cafu-core": "3.1.0",
+    "dev.upm-packages.stopwatch": "1.2.0",
+    "jp.cysharp.unirx": "7.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/umm/cafu_stopwatch"
+  }
+}
