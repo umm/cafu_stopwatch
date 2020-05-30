@@ -15,23 +15,25 @@ namespace CAFU.StopWatch.Package.Installer
 
         public override void InstallBindings()
         {
-            (InjectId == default || InjectId.Length == 0
-                    ? Container.Bind(typeof(IStopWatchUseCase), typeof(IStopWatchState))
-                    : Container.Bind(typeof(IStopWatchUseCase), typeof(IStopWatchState)).WithId(InjectId))
+            var contractTypes = new[]
+            {
+                typeof(IStopWatchUseCase),
+                typeof(IStopWatchState),
+            };
+
+            (string.IsNullOrEmpty(InjectId)
+                    ? Container.Bind(contractTypes)
+                    : Container.Bind(contractTypes).WithId(InjectId))
                 .FromSubContainerResolve()
-                .ByInstaller<SubContainerInstaller>()
-                .AsSingle()
-                .NonLazy();
+                .ByMethod(InstallSubContainer)
+                .WithKernel()
+                .AsCached();
         }
 
-        private class SubContainerInstaller : Installer<SubContainerInstaller>
+        private void InstallSubContainer(DiContainer subContainer)
         {
-            public override void InstallBindings()
-            {
-                Container.BindInterfacesTo<StopWatchUseCase>().AsCached();
-
-                Container.BindInterfacesTo<StopWatchState>().AsCached();
-            }
+            subContainer.BindInterfacesTo<StopWatchUseCase>().AsSingle();
+            subContainer.BindInterfacesTo<StopWatchState>().AsSingle();
         }
     }
 }

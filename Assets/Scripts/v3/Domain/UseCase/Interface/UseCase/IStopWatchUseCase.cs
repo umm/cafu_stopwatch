@@ -11,5 +11,7 @@ namespace CAFU.StopWatch.Domain.UseCase.Interface.UseCase
         void Pause();
 
         void Resume();
+
+        void Reset();
     }
 }

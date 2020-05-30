@@ -3,43 +3,40 @@ using CAFU.StopWatch.Domain.UseCase.Interface.Entity;
 using CAFU.StopWatch.Domain.UseCase.Interface.UseCase;
 using CAFU.StopWatch.Package.Enum;
 using UniRx;
+using UnityEngine;
 using UnityModule;
-using Zenject;
 
 namespace CAFU.StopWatch.Domain.UseCase.Implement
 {
     internal class StopWatchUseCase :
         IStopWatchUseCase,
-        IInitializable,
         IDisposable
     {
-        private IStopWatch StopWatch { get; } = new UnityModule.StopWatch();
+        private IStopWatch StopWatch { get; set; } = new UnityModule.StopWatch();
 
         private CompositeDisposable Disposable { get; } = new CompositeDisposable();
-
-        private IObservable<float> ElapsedTimeAsObservable() => StopWatch.TimeAsObservable;
 
         private IEventReceiver EventReceiver { get; }
 
         public StopWatchUseCase(IEventReceiver eventReceiver)
         {
             EventReceiver = eventReceiver;
-
-            StartObservingStopWatchTime();
+            Initialize();
         }
 
-        void IInitializable.Initialize()
+        private void Initialize()
         {
-        }
+            Disposable.Clear();
 
-        void IDisposable.Dispose() => Disposable.Dispose();
-
-        private void StartObservingStopWatchTime()
-        {
-            ElapsedTimeAsObservable()
+            StopWatch = new UnityModule.StopWatch();
+            EventReceiver.ElapsedTime.Value = 0;
+            StopWatch
+                .TimeAsObservable
                 .Subscribe(UpdateElapsedTime)
                 .AddTo(Disposable);
         }
+
+        void IDisposable.Dispose() => Disposable.Dispose();
 
         private void UpdateElapsedTime(float time)
         {
@@ -68,6 +65,11 @@ namespace CAFU.StopWatch.Domain.UseCase.Implement
         {
             StopWatch.Resume();
             EventReceiver.CurrentState.Value = StopWatchStateType.Started;
+        }
+
+        void IStopWatchUseCase.Reset()
+        {
+            Initialize();
         }
     }
 }
